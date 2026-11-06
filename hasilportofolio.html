@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naoki Ryland - IT Analyst & Researcher Portfolio</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --binder-bg: #111111;
+            --paper-left: #181818;
+            --paper-right: #e8e6e1;
+            --text-dark: #121212;
+            --text-light: #f5f5f5;
+            --accent-blue: #3b629b;
+            --accent-stamp: #9e2a2b;
+        }
+
+        body {
+            background-color: var(--binder-bg);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            padding: 40px 15px;
+            min-height: 100vh;
+        }
+
+        /* Binder Container Layout */
+        .binder-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #222222;
+            border-radius: 18px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+            position: relative;
+            padding: 20px;
+        }
+
+        .binder-book {
+            display: flex;
+            background-color: #000;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+        }
+
+        /* Metal Ring Spine in Center */
+        .binder-spine {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 32px;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        .ring {
+            width: 38px;
+            height: 15px;
+            background: linear-gradient(180deg, #ffffff 0%, #999999 50%, #222222 100%);
+            border-radius: 8px;
+            box-shadow: 0 5px 8px rgba(0,0,0,0.5);
+        }
+
+        /* Left Page (Dark Editorial) */
+        .page-left {
+            width: 50%;
+            background-color: var(--paper-left);
+            color: var(--text-light);
+            padding: 45px 35px;
+            position: relative;
+            border-right: 2px solid #0d0d0d;
+        }
+
+        /* Right Page (Light Editorial) */
+        .page-right {
+            width: 50%;
+            background-color: var(--paper-right);
+            color: var(--text-dark);
+            padding: 45px 35px;
+            position: relative;
+        }
+
+        /* Typography */
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            line-height: 0.9;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero-title span.italic {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .badge-tag {
+            background-color: var(--accent-blue);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            transform: rotate(-2deg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Polaroid Image Styling */
+        .polaroid-card {
+            background: #ffffff;
+            padding: 10px 10px 20px 10px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+            width: 210px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .polaroid-card:hover img {
+            filter: grayscale(0%);
+        }
+
+        .polaroid-caption {
+            font-family: 'Reenie Beanie', cursive;
+            font-size: 1.7rem;
+            color: #222;
+            margin-top: 6px;
+        }
+
+        /* Paperclip decoration */
+        .paperclip {
+            position: absolute;
+            top: -15px;
+            right: 15px;
+            width: 22px;
+            height: 42px;
+            border: 3px solid #ccc;
+            border-radius: 10px;
+            z-index: 5;
+            background: transparent;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Stamp Aesthetic */
+        .stamp-mark {
+            border: 2px dashed var(--accent-stamp);
+            color: var(--accent-stamp);
+            padding: 5px 12px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transform: rotate(-8deg);
+            display: inline-block;
+        }
+
+        /* Business Card (Contact Note) */
+        .business-card-note {
+            background: #fff;
+            color: #111;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            width: 260px;
+            font-size: 0.85rem;
+            transform: rotate(-3deg);
+            border-left: 5px solid var(--accent-blue);
+        }
+
+        .handwritten-note {
+            font-family: 'Reenie Beanie', cursive;
+            font-size: 1.6rem;
+            color: #333;
+            line-height: 1.1;
+        }
+
+        /* Section Titles inside Binder */
+        .binder-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            border-bottom: 2px solid var(--text-dark);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .binder-section-title-light {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            border-bottom: 2px solid var(--text-light);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .list-custom-item {
+            border-bottom: 1px dashed #cccccc;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .list-custom-item-dark {
+            border-bottom: 1px dashed #333333;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 992px) {
+            .binder-book {
+                flex-direction: column;
+            }
+            .page-left, .page-right {
+                width: 100%;
+            }
+            .binder-spine {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="binder-wrapper" data-aos="zoom-in">
+        <div class="binder-book">
+            
+            <!-- Center Binder Metal Rings -->
+            <div class="binder-spine">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+            </div>
+
+            <!-- LEFT PAGE (Dark Theme) -->
+            <div class="page-left d-flex flex-column justify-content-between">
+                <div>
+                    <!-- Header Top Left: Stamp & Polaroid -->
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="polaroid-card" style="transform: rotate(-5deg);">
+                            <div class="paperclip"></div>
+                            <img src="images/fish.jpeg" alt="Naoki Ryland">
+                            <div class="polaroid-caption">Naoki Ryland</div>
+                        </div>
+                        <div class="stamp-mark">APPROVED 2026</div>
+                    </div>
+
+                    <!-- Main Hero Title -->
+                    <div class="my-4">
+                        <span class="badge-tag mb-2">SENIOR IT ANALYST</span>
+                        <h1 class="hero-title">Port <span class="italic">folio</span></h1>
+                        <p class="text-secondary small mt-2">Sistem Integrasi | Pengolahan Data | Physical Computing</p>
+                    </div>
+
+                    <!-- Left Page Section 1: Research & Projects -->
+                    <div class="mt-4">
+                        <h3 class="binder-section-title-light">Project Highlights</h3>
+                        
+                        <div class="list-custom-item-dark">
+                            <div class="fw-bold text-white">Sistem Kontrol Pintu Air Otomatis</div>
+                            <small class="text-muted">Mikrokontroler, Sensor Air & Servo Motor</small>
+                        </div>
+                        <div class="list-custom-item-dark">
+                            <div class="fw-bold text-white">Dashboard Analisis Performa Akademik</div>
+                            <small class="text-muted">Python Pandas, Seaborn & Statistical Modeling</small>
+                        </div>
+                        <div class="list-custom-item-dark">
+                            <div class="fw-bold text-white">Interactive Web Learning Platform</div>
+                            <small class="text-muted">Responsive HTML5, CSS3, JavaScript & Bootstrap 5</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Card Contact Info Bottom-Left -->
+                <div class="business-card-note mt-4">
+                    <h6 class="fw-bold mb-1"><i class="bi bi-person-lines-fill me-1"></i> Kontak & Media</h6>
+                    <p class="mb-1"><i class="bi bi-envelope me-1"></i> naoki.ryland@domain.com</p>
+                    <p class="mb-1"><i class="bi bi-linkedin me-1"></i> linkedin.com/in/naokiryland</p>
+                    <p class="mb-0"><i class="bi bi-geo-alt me-1"></i> Malang, Jawa Timur, Indonesia</p>
+                </div>
+            </div>
+
+            <!-- RIGHT PAGE (Light Theme) -->
+            <div class="page-right d-flex flex-column justify-content-between">
+                <div>
+                    <!-- Top Section: Polaroid Right & Teaching Badge -->
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <div>
+                            <span class="badge bg-dark text-white mb-1">Pendidikan & Pengajaran</span>
+                            <h5 class="fw-bold mb-0">Sekolah Kalam Kudus</h5>
+                            <small class="text-muted">Pengembang Kurikulum & Instruktur IT</small>
+                        </div>
+                        <div class="polaroid-card" style="transform: rotate(4deg);">
+                            <div class="paperclip"></div>
+                            <img src="images/fish.jpeg" alt="Naoki Ryland Profile">
+                            <div class="polaroid-caption">Creative Analyst</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Page Section 2: Keahlian & Spesialisasi -->
+                    <div class="mb-4">
+                        <h3 class="binder-section-title">Keahlian & Core Capabilities</h3>
+                        
+                        <div class="list-custom-item d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold">Data Analytics & Visualization</span>
+                            <span class="badge bg-dark">Python, Pandas, Seaborn</span>
+                        </div>
+                        <div class="list-custom-item d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold">Web Development & Layout</span>
+                            <span class="badge bg-dark">Bootstrap 5, JS, CSS</span>
+                        </div>
+                        <div class="list-custom-item d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold">Embedded Systems</span>
+                            <span class="badge bg-dark">Micro:bit, Hardware Sensor</span>
+                        </div>
+                        <div class="list-custom-item d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold">System Architecture & Logic</span>
+                            <span class="badge bg-dark">C++, State Tracking</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Page Section 3: Publikasi / Research Focus -->
+                    <div class="mb-3">
+                        <h3 class="binder-section-title">Fokus Research 2026</h3>
+                        <p class="small text-muted mb-1">
+                            • Monitoring Sistem Terintegrasi Berbasis Sensor Real-Time.
+                        </p>
+                        <p class="small text-muted mb-0">
+                            • Evaluasi Modul Pembelajaran Interaktif untuk Logika Komputasi.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Handwritten Aesthetic Quote Bottom-Right -->
+                <div class="text-end mt-3">
+                    <p class="handwritten-note">"Analyze data, build seamless logic & shape practical solution."</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 & AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>
